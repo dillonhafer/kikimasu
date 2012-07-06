@@ -1,9 +1,9 @@
 == Prop Open
 This chrome extension is for keeping pandora.com playing.
 
-== Latest Version 0.0.2
-• Fixes permissions from being global to just pandora.com.
-• Fixed issue where pandora would become paused after playing for 4 hours.
+[Latest Version 0.0.2]
+* Fixes permissions from being global to just pandora.com.
+* Fixed issue where pandora would become paused after playing for 4 hours.
 
 == Copyright
 
