@@ -1,5 +1,3 @@
-chrome.extension.sendRequest({}, function(response) {});
-
 function checkIfPlaying() {
   var tag = document.getElementsByClassName("still_listening")[0];
   if (tag != undefined ) {
@@ -11,6 +9,7 @@ function checkIfPlaying() {
     document.getElementsByClassName("playButton")[0].click();
     console.log("pressed play");
   }
+  chrome.extension.sendRequest({}, function(response) {});  
 }
 
 setInterval(checkIfPlaying, 1000);

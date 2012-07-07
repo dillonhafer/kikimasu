@@ -1,6 +1,6 @@
 {
   "name" : "Prop Open",
-  "version" : "0.0.2",
+  "version" : "0.0.3",
   "description" : "Props open Pandora's box.",
   "background" : {
     "scripts": ["background.js"]
