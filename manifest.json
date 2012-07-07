@@ -12,10 +12,6 @@
   },
   "content_scripts" : [
     {
-      "matches" : [
-        "http://*/*",
-        "https://*/*"
-      ],
       "js" : ["contentscript.js"],
       "matches" : ["http://www.pandora.com/*", "https://www.pandora.com/*"],
       "run_at" : "document_idle",

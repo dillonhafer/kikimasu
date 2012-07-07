@@ -1,14 +1,15 @@
 function checkIfPlaying() {
-  var tag = document.getElementsByClassName("still_listening")[0];
-  if (tag != undefined ) {
+  // Check if pandora timed out
+  if (document.getElementsByClassName("still_listening")[0] != undefined) {
     document.getElementsByClassName("still_listening")[0].click();
-    console.log("clicked the link"); 
   }
 
+  // Check if pandora is paused
   if (document.getElementsByClassName("playButton")[0].style['cssText'] == 'display: block; ') {
     document.getElementsByClassName("playButton")[0].click();
-    console.log("pressed play");
   }
+  
+  // Make sure url icon is set
   chrome.extension.sendRequest({}, function(response) {});  
 }
 

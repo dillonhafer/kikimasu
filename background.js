@@ -1,3 +1,4 @@
+// Load url icon
 function onRequest(request, sender, sendResponse) {
   chrome.pageAction.show(sender.tab.id);
   sendResponse({});
