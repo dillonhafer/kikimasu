@@ -1,14 +1,14 @@
 {
   "name" : "Prop Open",
-  "version" : "0.0.3",
+  "version" : "0.0.4",
   "description" : "Props open Pandora's box.",
   "background" : {
     "scripts": ["background.js"]
   },
   "page_action" :
   {
-    "default_icon" : "pandora-19.png",
-    "default_title" : "Keep it open!"
+    "default_icon" : "prop-open-19.png",
+    "default_title" : "Unleash the music!"
   },
   "content_scripts" : [
     {
@@ -23,8 +23,8 @@
     }
   ],
   "icons" : {
-    "48" : "pandora-48.png",
-    "128" : "pandora-128.png"
+    "48" : "prop-open-48.png",
+    "128" : "prop-open-128.png"
   },
   "manifest_version": 2,
   "permissions": [
