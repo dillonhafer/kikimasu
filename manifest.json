@@ -1,7 +1,7 @@
 {
   "name" : "Prop Open",
-  "version" : "0.0.4",
-  "description" : "Props open Pandora's box.",
+  "version" : "0.0.5",
+  "description" : "A small extension allowing continuous playback of Pandora.",
   "background" : {
     "scripts": ["background.js"]
   },
@@ -22,7 +22,7 @@
     "48" : "prop-open-48.png",
     "128" : "prop-open-128.png"
   },
-  "manifest_version": 2,
+  "manifest_version": 5,
   "permissions": [
   		"http://www.pandora.com/*",
   		"https://www.pandora.com/*"
