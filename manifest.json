@@ -1,6 +1,6 @@
 {
   "name" : "Prop Open",
-  "version" : "0.0.5",
+  "version" : "0.0.6",
   "description" : "A small extension allowing continuous playback of Pandora.",
   "background" : {
     "scripts": ["background.js"]
@@ -22,8 +22,9 @@
     "48" : "prop-open-48.png",
     "128" : "prop-open-128.png"
   },
-  "manifest_version": 5,
+  "manifest_version": 6,
   "permissions": [
+      "tabs",
   		"http://www.pandora.com/*",
   		"https://www.pandora.com/*"
   	]
