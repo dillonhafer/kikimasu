@@ -5,12 +5,14 @@ localStorage['pandora_started_at'] = 0;
 function checkIfPlaying() {
   // Initialize timer
   var timer = parseInt(localStorage['pandora_started_at']);
-  
+  var remaining = document.getElementsByClassName("remainingTime")[0].innerHTML;
+  var remaining_time = remaining.replace("-", "").replace(":","");  
+
   // Restart after four hours
   if (timer < 10) {
     // Start playing after page refresh
     document.getElementsByClassName("playButton")[0].click();
-  } else if (timer > 14400) {
+  } else if (timer > 14400 && remaining_time < 4) {
     window.location.reload();
   }
 
