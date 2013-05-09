@@ -28,7 +28,10 @@ function checkIfPlaying() {
       document.getElementsByClassName("playButton")[0].click();
     }
   }
-
+  document.getElementsByClassName("playButton")[0].firstChild.style['cssText'] = "background:transparent !important;"
+  document.getElementsByClassName("pauseButton")[0].firstChild.style['cssText'] = "background:none !important;"
+  document.getElementsByClassName("playButton")[0].style['cssText'] = document.getElementsByClassName("playButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif) !important;"
+  document.getElementsByClassName("pauseButton")[0].style['cssText'] = document.getElementsByClassName("pauseButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif) !important;background-repeat:no-repeat;z-index:999999999"
   // Make sure url icon is set
   chrome.extension.sendRequest({}, function(response) {});
 
