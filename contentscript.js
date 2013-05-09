@@ -2,6 +2,13 @@
 localStorage['pandora_status'] = 'enabled';
 localStorage['pandora_started_at'] = 0;
 
+// Initialize images
+document.getElementsByClassName("playButton")[0].firstChild.style['cssText'] = "background:transparent !important;"
+document.getElementsByClassName("pauseButton")[0].firstChild.style['cssText'] = "background:none !important;"
+document.getElementsByClassName("playButton")[0].style['cssText'] = document.getElementsByClassName("playButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif);"
+document.getElementsByClassName("pauseButton")[0].style['cssText'] = document.getElementsByClassName("pauseButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif);background-repeat:no-repeat;z-index:999999999"
+
+
 function checkIfPlaying() {
   // Initialize timer
   var timer = parseInt(localStorage['pandora_started_at']);
@@ -26,12 +33,12 @@ function checkIfPlaying() {
   if (status === 'enabled') {
     if (/display:\ block/.test(document.getElementsByClassName("playButton")[0].style['cssText'])) {
       document.getElementsByClassName("playButton")[0].click();
+      document.getElementsByClassName("playButton")[0].firstChild.style['cssText'] = "background:transparent !important;"
+      document.getElementsByClassName("pauseButton")[0].firstChild.style['cssText'] = "background:none !important;"
+      document.getElementsByClassName("playButton")[0].style['cssText'] = document.getElementsByClassName("playButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif);"
+      document.getElementsByClassName("pauseButton")[0].style['cssText'] = document.getElementsByClassName("pauseButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif);background-repeat:no-repeat;z-index:999999999"
     }
   }
-  document.getElementsByClassName("playButton")[0].firstChild.style['cssText'] = "background:transparent !important;"
-  document.getElementsByClassName("pauseButton")[0].firstChild.style['cssText'] = "background:none !important;"
-  document.getElementsByClassName("playButton")[0].style['cssText'] = document.getElementsByClassName("playButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif) !important;"
-  document.getElementsByClassName("pauseButton")[0].style['cssText'] = document.getElementsByClassName("pauseButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif) !important;background-repeat:no-repeat;z-index:999999999"
   // Make sure url icon is set
   chrome.extension.sendRequest({}, function(response) {});
 
