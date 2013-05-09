@@ -24,7 +24,7 @@ function checkIfPlaying() {
   // Play if pandora is paused
   var status = localStorage['pandora_status'];
   if (status === 'enabled') {
-    if (document.getElementsByClassName("playButton")[0].style['cssText'] == 'display: block; ') {
+    if (/display:\ block/.test(document.getElementsByClassName("playButton")[0].style['cssText'])) {
       document.getElementsByClassName("playButton")[0].click();
     }
   }
