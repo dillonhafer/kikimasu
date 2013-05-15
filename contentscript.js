@@ -19,7 +19,7 @@ function checkIfPlaying() {
   if (timer < 10) {
     // Start playing after page refresh
     document.getElementsByClassName("playButton")[0].click();
-  } else if (timer > 14400 && remaining_time < 4) {
+  } else if (timer > 3500 && remaining_time < 4) {
     window.location.reload();
   }
 
