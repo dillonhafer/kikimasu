@@ -1,6 +1,6 @@
 {
   "name" : "Prop Open",
-  "version" : "0.0.10",
+  "version" : "0.0.11",
   "description" : "A small extension allowing continuous playback of Pandora.",
   "background" : {
     "scripts": ["background.js"]
