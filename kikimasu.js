@@ -71,11 +71,13 @@ var kiki = {
     return Boolean(/display:\ block/.test(displayStyle))
   },
 
+  // Remaing seconds for currently playing song.
   remainingSeconds: function() {
     var remaining = document.querySelector('.remainingTime').innerHTML
     return parseInt(remaining.replace("-", "").replace(":",""))
   },
 
+  // Returns true if the page is stale and we are at the end of a song.
   needsReloaded: function() {
     var longRunTime = Boolean(kiki.settings.startedAt() > 3500)
     var endOfSong   = Boolean(kiki.remainingSeconds() < 4)
@@ -88,15 +90,19 @@ var kiki = {
 
   ensurePlayback: function() {
     if (kiki.needsReloaded()) {
+      // Page was stale. Reload for cleanliness.
       kiki.reload()
     } else if (kiki.stillListeningPresent()) {
-      console.log("Still listening needs to be clicked")
+      console.log("%cStill Listening had to be clicked", "color: blue; font-size: large")
       kiki.stillListeningButton().click()
     }
 
+    // Ensure Pandor is always playing if the plugin is enabled.
     if (kiki.enabled() && kiki.paused()) {
       kiki.play()
     }
+
+    // Update the timer
     kiki.updateTimer()
   }
 }
@@ -114,6 +120,7 @@ chrome.runtime.onMessage.addListener(
       break
     }
   }
-);
+)
+
 // Start the extension
 kiki.init()
