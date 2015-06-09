@@ -1,16 +1,22 @@
 var settings = {
+  // Retrieves the setting for enabling/disabling the extension
   kikiStatus: function() {
     return localStorage['kikimasu_status']
   },
+  // Retrieves the seconds since page load
   startedAt: function() {
     return parseInt(localStorage['pandora_started_at'])
   },
+  // Updates the seconds since page load
   updateStartedAt: function(time) {
     localStorage['pandora_started_at'] = time
   },
+  // Manage plugin status
+  // Sets status to disabled
   disable: function() {
     localStorage['kikimasu_status'] = 'disabled'
   },
+  // Sets status to enabled
   enable: function() {
     localStorage['kikimasu_status'] = 'enabled'
   }
@@ -18,14 +24,16 @@ var settings = {
 
 var kiki = {
   init: function() {
-    // Initialize local storage variable
-    console.warn("Loading kiki")
+    // Initialize local storage variables
     localStorage['kikimasu_status'] = 'enabled'
     localStorage['pandora_started_at'] = 0
     kiki.settings = settings
+    // Start the loop
     setInterval(kiki.ensurePlayback, 1000)
   },
 
+  // Reloads the plugin.
+  // Future may require more than a page reload.
   reload: function() {
     window.location.reload()
   },
@@ -50,10 +58,6 @@ var kiki = {
     kiki.pauseButton().click()
   },
 
-  recentlyReloaded: function() {
-    return Boolean(kiki.setings.startedAt() < 10)
-  },
-
   stillListeningPresent: function() {
     return Boolean(kiki.stillListeningButton() != undefined)
   },
@@ -61,7 +65,6 @@ var kiki = {
   enabled: function() {
     return Boolean(kiki.settings.kikiStatus() === 'enabled')
   },
-
 
   paused: function() {
     var displayStyle = kiki.playButton().style['cssText']
