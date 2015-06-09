@@ -8,7 +8,7 @@
   },
   "page_action" :
   {
-    "default_icon" : "prop-open-19.png",
+    "default_icon" : "kikimasu-19.png",
     "default_title" : "Kikimasu",
     "default_popup" : "popup.html"
   },
@@ -21,8 +21,8 @@
     }
   ],
   "icons" : {
-    "48" : "prop-open-48.png",
-    "128" : "prop-open-128.png"
+    "48" : "kikimasu-48.png",
+    "128" : "kikimasu-128.png"
   },
   "manifest_version": 2,
   "permissions": [
