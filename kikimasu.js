@@ -23,7 +23,7 @@ var settings = {
 }
 
 var kiki = {
-  init: function() {
+  run: function() {
     // Initialize local storage variables
     localStorage['kikimasu_status'] = 'enabled'
     localStorage['pandora_started_at'] = 0
@@ -107,6 +107,7 @@ var kiki = {
   }
 }
 
+// Used to respond to calls from popup.js
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     switch(request.func) {
@@ -123,4 +124,4 @@ chrome.runtime.onMessage.addListener(
 )
 
 // Start the extension
-kiki.init()
+kiki.run()

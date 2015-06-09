@@ -1,9 +1,10 @@
 var popup = {
-  init: function() {
+  run: function() {
     popup.playButton().addEventListener('click', popup.play)
     popup.pauseButton().addEventListener('click', popup.pause)
   },
 
+  // Used to communicate/call methods in kikimasu.js
   kiki: function(func) {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {func: func}, function(response) {})
@@ -28,5 +29,5 @@ var popup = {
 }
 
 // Run the popup window
-document.addEventListener('DOMContentLoaded', popup.init)
+document.addEventListener('DOMContentLoaded', popup.run)
 
