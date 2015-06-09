@@ -3,17 +3,57 @@
   <head>
     <style>
       #main-popup {
-        width: 300px;
+        width: 250px;
       }
       .hide { display: none; }
+
+      .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        margin-left: 6px;
+        margin-right: 6px;
+      }
+      .btn:hover, .btn:focus, .btn:active {
+        background-color: #286090;
+        border-color: #204d74;
+      }
+      .center { text-align: center; }
+      h2 { margin-bottom: 3px; }
     </style>
   </head>
   <body>
-    <div id="main-popup">
-      <h3>Kikimasu</h3>
+    <div id="main-popup" class='center'>
+      <h2>Kikimasu</h2>
+      Version 1.0
+      <br />
+      <br />
+      <a id="play-pandora" class='btn' href="#">Play</a>
+      <a id="pause-pandora" class='btn' href="#">Pause</a>
 
-      <a id="play-pandora" href="#">Play</a>
-      <a id="pause-pandora" class='' href="#">Pause</a>
+      <br />
+      <br />
+      <a href="https://github.com/dillonhafer/kikimasu" target="_blank">About</a>
+      <br />
+      <a href="https://github.com/dillonhafer/kikimasu/issues" target="_blank">Bugs</a>
     </div>
     <script type="text/javascript" src="popup.js"></script>
   </body>
