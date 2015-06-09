@@ -1,18 +1,20 @@
 {
-  "name" : "Prop Open",
-  "version" : "0.0.11",
+  "name" : "Kikimasu",
+  "version" : "1.0",
   "description" : "A small extension allowing continuous playback of Pandora.",
   "background" : {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "page_action" :
   {
     "default_icon" : "prop-open-19.png",
-    "default_title" : "Unleash the music!"
+    "default_title" : "Kikimasu",
+    "default_popup" : "popup.html"
   },
   "content_scripts" : [
     {
-      "js" : ["contentscript.js"],
+      "js" : ["kikimasu.js"],
       "matches" : ["http://www.pandora.com/*", "https://www.pandora.com/*"],
       "run_at" : "document_idle",
       "all_frames" : false
@@ -24,6 +26,7 @@
   },
   "manifest_version": 2,
   "permissions": [
+      "declarativeContent",
       "tabs",
   		"http://www.pandora.com/*",
   		"https://www.pandora.com/*"
