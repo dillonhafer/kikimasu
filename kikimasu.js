@@ -7,6 +7,12 @@ var settings = {
   },
   updateStartedAt: function(time) {
     localStorage['pandora_started_at'] = time
+  },
+  disable: function() {
+    localStorage['kikimasu_status'] = 'disabled'
+  },
+  enable: function() {
+    localStorage['kikimasu_status'] = 'enabled'
   }
 }
 
@@ -56,9 +62,6 @@ var kiki = {
     return Boolean(kiki.settings.kikiStatus() === 'enabled')
   },
 
-  disable: function() {
-    localStorage['kikimasu_status'] = 'disabled';
-  },
 
   paused: function() {
     var displayStyle = kiki.playButton().style['cssText']
@@ -83,9 +86,7 @@ var kiki = {
   ensurePlayback: function() {
     if (kiki.needsReloaded()) {
       kiki.reload()
-    }
-
-    if (kiki.stillListeningPresent()) {
+    } else if (kiki.stillListeningPresent()) {
       console.log("Still listening needs to be clicked")
       kiki.stillListeningButton().click()
     }
@@ -97,39 +98,19 @@ var kiki = {
   }
 }
 
-function checkIfPlaying() {
-  // Initialize timer
-  var timer = parseInt(localStorage['pandora_started_at']);
-  var remaining = document.getElementsByClassName("remainingTime")[0].innerHTML;
-  var remaining_time = remaining.replace("-", "").replace(":","");  
-
-  // Restart after four hours
-  if (timer < 10) {
-    // Start playing after page refresh
-    document.getElementsByClassName("playButton")[0].click();
-  } else if (timer > 3500 && remaining_time < 4) {
-    window.location.reload();
-  }
-
-  // Check if pandora timed out
-  if (document.getElementsByClassName("still_listening")[0] != undefined) {
-    document.getElementsByClassName("still_listening")[0].click();
-  }
-
-  // Play if pandora is paused
-  var status = localStorage['pandora_status'];
-  if (status === 'enabled') {
-    if (/display:\ block/.test(document.getElementsByClassName("playButton")[0].style['cssText'])) {
-      document.getElementsByClassName("playButton")[0].click();
-     // document.getElementsByClassName("playButton")[0].firstChild.style['cssText'] = "background:transparent !important;"
-     // document.getElementsByClassName("pauseButton")[0].firstChild.style['cssText'] = "background:none !important;"
-      //document.getElementsByClassName("playButton")[0].style['cssText'] = document.getElementsByClassName("playButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif);"
-      //ocument.getElementsByClassName("pauseButton")[0].style['cssText'] = document.getElementsByClassName("pauseButton")[0].style['cssText']+"background-image:url(/img/splash_spinner.gif);background-repeat:no-repeat;z-index:999999999"
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    switch(request.func) {
+    case "pause":
+      kiki.settings.disable()
+      kiki.pause()
+      break
+    case "play":
+      kiki.settings.enable()
+      kiki.play()
+      break
     }
   }
-
-  // Increment started at timer  
-  localStorage['pandora_started_at'] = timer + 1;
-}
-
+);
+// Start the extension
 kiki.init()

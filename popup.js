@@ -2,7 +2,12 @@ var popup = {
   init: function() {
     popup.playButton().addEventListener('click', popup.play)
     popup.pauseButton().addEventListener('click', popup.pause)
-    popup.kiki = chrome.extension.getBackgroundPage()
+  },
+
+  kiki: function(func) {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {func: func}, function(response) {})
+    });
   },
 
   playButton: function() {
@@ -14,15 +19,11 @@ var popup = {
   },
 
   pause: function() {
-    popup.playButton().className = ''
-    popup.pauseButton().className = 'hide'
-    popup.kiki.disable()
+    popup.kiki('pause')
   },
 
   play: function() {
-    popup.playButton().className = 'hide'
-    popup.pauseButton().className = ''
-    localStorage['kikimasu_status'] = 'enabled';
+    popup.kiki('play')
   }
 }
 
