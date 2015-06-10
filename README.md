@@ -21,4 +21,4 @@ Clicking the icon in the URL bar allows you to pause Kikimasu.
 
 ## Copyright
 
-© 2012 DillonHafer.com. All rights reserved.
+© 2012-2015 DillonHafer.com. All rights reserved.
